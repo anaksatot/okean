@@ -24,18 +24,16 @@ public class ProposalDaoImpl implements ProposalDao {
     }
 
     public void persist(Proposal proposal) {
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
         entityManager.persist(proposal);
-        entityManager.getTransaction().commit();
+        //entityManager.getTransaction().commit();
     }
 
     public void update(Proposal proposal) {
-        entityManager.getTransaction().begin();
         Proposal proposalUpdate = findById(proposal.getProposalID());
         proposalUpdate.setProposalDescription(proposal.getProposalDescription());
         proposalUpdate.setProposalValue(proposal.getProposalValue());
         entityManager.flush();
-        entityManager.getTransaction().commit();
     }
 
     public Proposal findById(int proposalID) {
